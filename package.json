@@ -1,0 +1,23 @@
+{
+  "name": "helpages",
+  "version": "0.0.1",
+  "description": "Public Question and Answer App",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "public",
+    "question",
+    "and",
+    "answer",
+    "app"
+  ],
+  "author": "Ayodeji Adediran",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^1.19.1",
+    "pug": "^2.0.4"
+  }
+}

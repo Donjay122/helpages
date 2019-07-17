@@ -1,0 +1,47 @@
+extends layout
+block content
+    #wrapper
+      #header
+        .container-fluid.main-nav
+          ul.nav.justify-content-center
+            li.nav-item
+              a.nav-link.active(href='/')
+                img#mainlogo(src='static/logo.png')
+        header
+          .container
+            #questioninput.input-group.mb-3
+              input#questionvalue.form-control(type='text', placeholder='Ask a question', v-model='question')
+              .input-group-append
+                button#button-addon2.btn.btn-outline-secondary(type='button', @click='postq()') Ask
+      main
+        .container.mainheading
+          h2 Helpages Top Questions
+        .container
+          .questions(v-for='(question, index ) in topquestions')
+            img#avatar(src='static/avatar.png', alt='avatar')
+            a(href='question')
+              h3(v-text='question.text', @click='saveqid(index)')
+            p
+              span Asked on 
+              span(v-text='question.createdAt.slice(0,10)')
+      #toast.toast(role='alert', aria-live='assertive', aria-atomic='true', data-delay='10000')
+        .toast-header
+          img.rounded.mr-2(src='static/avatar.png', alt='...', width='20px')
+          strong.mr-auto New Question  
+          small#questiontime
+          button.ml-2.mb-1.close(type='button', data-dismiss='toast', aria-label='Close')
+            span(aria-hidden='true') ×
+        #toastmessage.toast-body
+      audio#sound
+        source(src='static/sound/alert.wav', type='audio/wav')
+
+    // - wrapper
+    // VUE JS
+    script(src='https://cdn.jsdelivr.net/npm/vue/dist/vue.js')
+    // Optional JavaScript
+    script(src='static/js/app.js')
+    script(src='static/js/actions.js')
+    // jQuery first, then Popper.js, then Bootstrap JS
+    script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js', integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo', crossorigin='anonymous')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js', integrity='sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1', crossorigin='anonymous')
+    script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js', integrity='sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM', crossorigin='anonymous')

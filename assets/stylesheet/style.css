@@ -1,0 +1,179 @@
+
+#header{
+    z-index: 1;
+    background-color: rgb(17, 74, 97);
+    position: fixed;
+    width: 100%;
+}
+
+#mainlogo{
+    width:30vw;
+}
+
+#questioninput{
+    width: 60vw;
+    margin: auto;
+    padding: 2em;
+    font-family: 'Raleway';
+}
+
+#button-addon2{
+    background-color: white;
+    color:black
+}
+
+.mainheading{
+    text-align: center;
+    padding-top:15em;
+    font-family: 'Raleway';
+}
+
+.questionanswers{
+   padding-top:7em;
+}
+.questionanswers h4{
+    padding: 1em;
+    text-align: center;
+    font-family: 'Raleway';
+    width: 60vw;
+    margin: auto;
+    margin-bottom: 2em;
+}
+
+.answers{
+    padding: 2em;
+    border-bottom:solid 1px grey;
+    border-top:solid 1px grey;
+    width: 60vw;
+    margin: auto;
+    position: relative;
+    margin-bottom: 2em;
+}
+
+.answers p{
+    display: inline-block;
+    padding: .5em;
+    font-family: 'Raleway';
+    cursor: pointer;
+}
+
+.questions{
+  padding: 2em;
+  border-top:solid 2px grey;
+  border-bottom:solid 2px grey;
+  width: 60vw;
+  margin: auto;
+  position: relative;
+  font-family: 'Raleway';
+}
+
+.questions h3{
+    display: inline-block;
+    padding: 1em;
+    font-size: 1.3em;
+    color: rgb(17, 74, 97);
+}
+
+.questions p{
+   position: absolute;
+   right: 10%;
+   bottom:10%;
+}
+
+.postanswer h5{
+    font-family: 'Raleway';
+    width:60vw;
+    margin: auto;
+}
+
+.answertextarea{
+    width: 65vw;
+    margin: auto;
+    padding: 2em;
+    font-family: 'Raleway';
+}
+
+.answertextarea textarea{
+    margin-bottom: 1em;
+}
+
+.answertextarea button{
+    background-color: rgb(17, 74, 97);
+}
+
+#avatar{
+    width: 3vw;
+}
+
+#voteup{
+    position: absolute;
+    right: 5%;
+    top:4%;
+    font-size: 1.5em;
+    color: rgb(3, 78, 3);
+    cursor: pointer;
+}
+#votedown{
+    position: absolute;
+    right: 5%;
+    bottom: 4%;
+    font-size: 1.5em;
+    color: rgb(151, 11, 11);
+    cursor: pointer;
+}
+#votecount{
+    position: absolute;
+    right: 5%;
+    bottom: 35%;
+    font-size: 1.5em;
+}
+
+.editanswer{
+    width:55vw;
+    border: solid 0.7px rgb(190, 187, 187);
+    border-radius: 5px;
+}
+
+.editanswer + button{
+    margin-right:1em;
+}
+.editanswer + button + button{
+    margin-right:1em;
+}
+
+.answers button{
+    background-color: rgb(17, 74, 97);
+}
+
+
+
+@media(max-width:600px){
+    #mainlogo{
+        width:50vw;
+    }
+    #questioninput{
+        width: 90vw;
+        margin: auto;
+        padding: 2em;
+    }
+    .mainheading h2{
+        text-align: center;
+        font-size: 1.5em;
+    }
+    .questions{
+        padding: 2em;
+        width: 90vw;
+      }
+      #avatar{
+        width: 6vw;
+    }
+    .answers{
+        width: 90vw;
+    }
+    .answertextarea{
+        width:90vw;
+    }
+    .editanswer{
+        width: 80vw;
+    }
+}
