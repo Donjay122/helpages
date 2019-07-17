@@ -6,8 +6,8 @@ var index = new Vue({
         question:'',
         answer:'',
         questionid:'',
-        url:'http://localhost:3000/questions/',
-        qurl:'http://localhost:3000/questions/'+sessionStorage.getItem('qid'),
+        url:'https://api-helpages.herokuapp.com/questions/',
+        qurl:'https://api-helpages.herokuapp.com/questions/'+sessionStorage.getItem('qid'),
         topquestions:[],
         readquestion:[],
         testarray:[]

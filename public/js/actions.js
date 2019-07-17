@@ -33,7 +33,7 @@ setInterval(function(){
            }
         }
     };
-    xhttp.open("GET", "http://localhost:3000/questions/", true);
+    xhttp.open("GET", "https://api-helpages.herokuapp.com/questions/", true);
     xhttp.send();     
     
 },1000);
