@@ -9,8 +9,7 @@ var index = new Vue({
         url:'https://api-helpages.herokuapp.com/questions/',
         qurl:'https://api-helpages.herokuapp.com/questions/'+sessionStorage.getItem('qid'),
         topquestions:[],
-        readquestion:[],
-        testarray:[]
+        readquestion:[]
     },
     methods:{
         postq: function(){
@@ -18,16 +17,17 @@ var index = new Vue({
             axios.post(this.url, {
                 text: this.question
               })
-              .then(function (response) {
+              .then((response)=> {
                 console.log(response);
-               var input = document.getElementById('questionvalue');
-               input.value = "";
-               //////refresh page for update
-               location.reload();
+               this.topquestions.push(response.data);
+               this.topquestions.sort((a ,b)=>{
+                 return -1;
+               });
+               this.question = '';
 
               })
-              .catch(function (error) {
-                console.log(error.response.data.message);
+              .catch((error)=> {
+                console.log(error);
               });
 
            
@@ -38,15 +38,13 @@ var index = new Vue({
             axios.post(this.qurl+"/answers", {
                 text: this.answer
               })
-              .then(function (response) {
+              .then((response)=> {
                 console.log(response);
-                var input = document.getElementById('answerfield');
-                input.value = "";
-               //////refresh page for update
-               location.reload();
-
+                this.readquestion = response.data;
+                this.answer = '';
+                 
               })
-              .catch(function (error) {
+              .catch((error)=> {
                 console.log(error);
               });
 
@@ -57,13 +55,12 @@ var index = new Vue({
            
             axios.post(voteurl, {
               })
-              .then(function (response) {
+              .then((response)=> {
                 console.log(response);
-               //////refresh page for update
-               location.reload();
+                this.readquestion = response.data;
 
               })
-              .catch(function (error) {
+              .catch((error)=> {
                 console.log(error);
               });
 
@@ -115,13 +112,12 @@ var index = new Vue({
                 axios.put(url, {
                     text: updatedanswer
                   })
-                  .then(function (response) {
+                  .then((response)=> {
                     console.log(response);
-                    //////refresh page for update
-                    location.reload();
+                    this.readquestion = response.data;
     
                   })
-                  .catch(function (error) {
+                  .catch((error)=> {
                     console.log(error);
                   });
 
@@ -129,7 +125,7 @@ var index = new Vue({
                   parentTag.removeChild(savebutton);
                   parentTag.removeChild(cancelbutton);
                   parentTag.removeChild(deletebutton);
-                  targetTag.nextElementSibling.style.visibility = 'block';
+                  targetTag.nextElementSibling.style.visibility = 'visible';
 
                }else if(e.target.textContent == "Cancel"){
 ////////// EDITOR ~   IF USERS CLICKS CANCEL
@@ -138,7 +134,7 @@ var index = new Vue({
                 parentTag.removeChild(savebutton);
                 parentTag.removeChild(cancelbutton);
                 parentTag.removeChild(deletebutton);
-                targetTag.nextElementSibling.style.visibility = 'block';
+                targetTag.nextElementSibling.style.visibility = 'visible';
 
 
                }else if(e.target.textContent == "Delete"){
@@ -146,13 +142,11 @@ var index = new Vue({
 
                     axios.delete(url, {
                     })
-                    .then(function (response) {
+                    .then((response)=> {
                         console.log(response);
-                    //////refresh page for update
-                    location.reload();
-                    
+                        this.readquestion = response.data;
                     })
-                    .catch(function (error) {
+                    .catch((error)=> {
                         console.log(error);
                     });
 
@@ -160,7 +154,7 @@ var index = new Vue({
                     parentTag.removeChild(savebutton);
                     parentTag.removeChild(cancelbutton);
                     parentTag.removeChild(deletebutton);
-                    targetTag.nextElementSibling.style.visibility = 'block';
+                    targetTag.nextElementSibling.style.visibility = 'visible';
 
                }
            })
@@ -172,15 +166,7 @@ var index = new Vue({
     mounted(){
 
         axios.get(this.url).then(response => {
-
-          var sortQuestion = (a,b)=>{
-            if(a.createdAt > b.createdAt){
-              return -1;
-            }
-
-          }
             this.topquestions = response.data;
-            this.testarray = this.topquestions.sort(sortQuestion);
           });
 
           axios.get(this.qurl).then(response => {
