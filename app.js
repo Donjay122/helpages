@@ -17,6 +17,22 @@ app.get('/question',(req , res)=>{
     res.render('question');
 });
 
+////// 404
+app.use((req , res , next)=>{
+    var err = new Error("Not found");
+    err.status = 404;
+    next(err);
+});
+
+app.use((err , req , res , next)=>{
+    if(err.status === 404){
+        res.render('error');
+    }else{
+        err.status = 500;
+        res.json(err);
+    }
+})
+
 
 app.listen(port,()=>{
     console.log("Express server running on port "+port);
